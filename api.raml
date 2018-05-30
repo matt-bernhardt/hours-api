@@ -8,25 +8,39 @@ types:
   Hours:
     type: object
     properties:
-      id: number
-      location: string
-      session:
-        type: object
-        properties:
-          location: string
-          open: datetime
-          close: datetime
-          message: string
+      locationId: string
+      locationName: string
+      open: datetime
+      close: datetime
+      message: string
 /hours:
   get:
+    queryParameters:
+      locationId:
+        description: filter locations
+      date:
+        description: filter by date
     responses:
       200:
         body:
           application/json:
             example: |
-              {
-                "location" : "Barker Library",
-                "open": "2018-05-30Z00:00:00",
-                "closed": "2018-05-30Z00:01:00",
+              [{
+                "locationId": "barker",
+                "locationName" : "Barker Library",
+                "open": "2018-05-30Z08:00:00",
+                "closed": "2018-05-30Z10:00:00",
                 "message": "Barker is closing early due to snow."
+              },{
+                "locationId": "dewey",
+                "locationName" : "Dewey Library",
+                "open": "2018-05-30Z08:00:00",
+                "closed": "2018-05-30Z17:00:00"
+              }]
+      404:
+        body:
+          application/json:
+            example: |
+              {
+                "message": "No matching location found."
               }
