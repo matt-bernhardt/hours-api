@@ -6,6 +6,7 @@ protocols:
   - HTTPS
 types:
   Hours:
+    displayName: Hours
     type: object
     properties:
       locationId: string
@@ -15,6 +16,7 @@ types:
       message: string
 /hours:
   get:
+    description: Returns an array of library Hours.
     queryParameters:
       locationId:
         description: filter locations
