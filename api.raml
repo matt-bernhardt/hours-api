@@ -1,0 +1,26 @@
+#%RAML 1.0
+title: Library Hours API
+version: v1
+baseUri: http://api.samplehost.com
+protocols:
+  - HTTPS
+types:
+  TestType:
+    type: object
+    properties:
+      id: number
+      optional?: string
+      expanded:
+        type: object
+        properties:
+          count: number
+/hours:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "message" : "Hello World"
+              }
