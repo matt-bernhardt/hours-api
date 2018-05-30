@@ -5,15 +5,18 @@ baseUri: http://api.samplehost.com
 protocols:
   - HTTPS
 types:
-  TestType:
+  Hours:
     type: object
     properties:
       id: number
-      optional?: string
-      expanded:
+      location: string
+      session:
         type: object
         properties:
-          count: number
+          location: string
+          open: datetime
+          close: datetime
+          message: string
 /hours:
   get:
     responses:
@@ -22,5 +25,8 @@ types:
           application/json:
             example: |
               {
-                "message" : "Hello World"
+                "location" : "Barker Library",
+                "open": "2018-05-30Z00:00:00",
+                "closed": "2018-05-30Z00:01:00",
+                "message": "Barker is closing early due to snow."
               }
